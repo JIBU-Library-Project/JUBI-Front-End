@@ -4,10 +4,11 @@ const HomePage = () => {
   return (
     <div>
       <PagesLayoutUser>
-          <div>HomePage</div>
+        <div>HomePage</div>
+        <div>HomePage</div>
+        <div>HomePage</div>
+        <div>HomePage</div>
       </PagesLayoutUser>
-    
-     
     </div>
   );
 };
