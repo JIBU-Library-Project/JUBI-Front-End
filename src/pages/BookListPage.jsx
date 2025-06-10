@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import PagesLayoutUser from "../layouts/PagesLayoutUser";
 
 const BookListPage = () => {
   return (
-    <div>BookListPage</div>
-  )
-}
+    <div>
+      <PagesLayoutUser>
+        <div>BookListPage</div>
+      </PagesLayoutUser>
+    </div>
+  );
+};
 
-export default BookListPage
+export default BookListPage;

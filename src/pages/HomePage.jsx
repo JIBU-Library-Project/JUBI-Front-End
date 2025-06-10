@@ -1,9 +1,15 @@
-import React from 'react'
+import PagesLayoutUser from "../layouts/PagesLayoutUser";
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
-  )
-}
+    <div>
+      <PagesLayoutUser>
+          <div>HomePage</div>
+      </PagesLayoutUser>
+    
+     
+    </div>
+  );
+};
 
-export default HomePage
+export default HomePage;

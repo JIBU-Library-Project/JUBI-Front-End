@@ -1,8 +1,13 @@
 import React from 'react'
+import PagesLayoutAdmin from '../layouts/PagesLayoutAdmin'
 
 const AddBookForm = () => {
   return (
-    <div>AddBookForm</div>
+     <div>
+      <PagesLayoutAdmin>
+         <div>Add Book</div>
+      </PagesLayoutAdmin>
+    </div>
   )
 }
 

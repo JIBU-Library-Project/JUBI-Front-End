@@ -1,8 +1,14 @@
 import React from 'react'
+import PagesLayoutAdmin from '../layouts/PagesLayoutAdmin'
 
 const AdminPage = () => {
   return (
-    <div>AdminPage</div>
+    <div>
+      <PagesLayoutAdmin>
+         <div>AdminPage</div>
+      </PagesLayoutAdmin>
+    </div>
+   
   )
 }
 
