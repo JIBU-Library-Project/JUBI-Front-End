@@ -1,0 +1,26 @@
+
+
+*{
+ margin: 0;
+ padding: 0;
+}
+.foam{
+    width: 50%;
+    /* max-width: 800px; */
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url("./assets/light.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    margin: 20px;
+    color: white;
+    align-items: center;
+    
+    
+
+
+}
