@@ -1,32 +1,34 @@
-*{
+* {
   font-family: "poppins";
 }
 
 #book-card {
   display: flex;
-background-color: rgb(255, 251, 243);
-border: 1px solid rgb(167, 166, 166);
-border-radius: 5px;
+  background-color: rgb(255, 251, 243);
+  border: 1px solid rgb(167, 166, 166);
+  border-radius: 5px;
 }
 
 .view {
- background-color: rgb(68, 68, 68);
- color: aliceblue;
+  background-color: rgb(68, 68, 68);
+  color: aliceblue;
   padding: 3px 8px;
   border-radius: 5px;
-  border:  solid black solid wheat;
+  border: solid black solid wheat;
 }
+
 .edit {
   background-color: rgb(68, 68, 68);
   padding: 3px 8px;
   border-radius: 5px;
-    border:  solid black solid wheat;
+  border: solid black solid wheat;
 }
+
 .delete {
   background-color: rgb(68, 68, 68);
   padding: 3px 8px;
   border-radius: 5px;
-    border:  solid black solid wheat;
+  border: solid black solid wheat;
 }
 
 #book-info {
@@ -38,7 +40,7 @@ border-radius: 5px;
   font-size: 2rem;
   padding-bottom: 10px;
   color: black;
-  
+
 }
 
 #book-actions {
@@ -52,7 +54,7 @@ border-radius: 5px;
   background-color: 
 } */
 
-#book-childs p{
-   color: rgb(0, 0, 0);
+#book-childs p {
+  color: rgb(0, 0, 0);
   font-size: 1rem;
 }
