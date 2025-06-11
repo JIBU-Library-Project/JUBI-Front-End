@@ -7,20 +7,20 @@ const AdminNavBar = () => {
       <span>LOGO</span>
       <ul className="flex flex-row gap-x-[1rem]">
 
-         <Link to={"/"}>
-          <li>Home</li>
+         <Link to={"/admin-booklist"}>
+          <li>All Books</li>
         </Link>
         <Link to={"/add-book"}>
-          <li>AddBook</li>
+          <li>Add Book</li>
         </Link>
         <Link to={"/edit-book"}>
-          <li>EditBook</li>
+          <li>Edit Book</li>
         </Link>
         
       </ul>
-      <Link to="/admin-page">
+      <Link to="/">
         <button className="bg-emerald-400 text-white rounded-[7px] border-2 border-amber-200 py-[10px] px-[2em]">
-          Admin
+          Back to User Page
         </button>
       </Link>
     </nav>
