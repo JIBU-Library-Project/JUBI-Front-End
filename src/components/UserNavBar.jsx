@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 const UserNavBar = () => {
   return (
-    <nav className=" mt-4 p-2 //bg-amber-500 flex flex-row justify-between items-center pl-1">
+    <nav className="flex-wrap p-8 bg-[#ffffff] flex flex-row justify-between items-center pl-1">
       <span className="ml-10 font-extrabold text-[25px] ">JUBILib.</span>
       <ul className=" pl-15 pr-15 flex gap-x-15 bg-[#1a1c19] text-black rounded-[2rem] border-amber-200 py-[10px] px-[1.5em]">
         <Link to={"/"}>

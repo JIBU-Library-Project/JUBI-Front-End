@@ -1,77 +1,79 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BookCard from "../components/BookCard";
-
-const books = [
-  {
-    id: 1,
-    title: "The Big Bird",
-    author: "John Doe",
-    genre: "Fiction",
-    year: 2021,
-    description: "A thrilling tale of a mysterious bird.",
-    imageUrl: "https://blog-cdn.reedsy.com/directories/gallery/254/large_f9aca907606b40f478a4ec40ade5f476.jpg",
-    isAvailable: true,
-  },
-  {
-    id: 2,
-    title: "Whispers of the Forest",
-    author: "Jane Smith",
-    genre: "Fantasy",
-    year: 2019,
-    description: "An enchanting journey through an ancient forest.",
-    imageUrl: "https://blog-cdn.reedsy.com/directories/gallery/250/large_c58c89de3e7f1d60d64f7e344999fc2f.jpg",
-    isAvailable: false,
-  },
-  {
-    id: 2,
-    title: "Whispers of the Forest",
-    author: "Jane Smith",
-    genre: "Fantasy",
-    year: 2019,
-    description: "An enchanting journey through an ancient forest.",
-    imageUrl: "https://blog-cdn.reedsy.com/directories/gallery/255/large_6cacd912f898ca2f94d083737783e23e.jpg",
-    isAvailable: false,
-  },
-  {
-    id: 2,
-    title: "Whispers of the Forest",
-    author: "Jane Smith",
-    genre: "Fantasy",
-    year: 2019,
-    description: "An enchanting journey through an ancient forest.",
-    imageUrl: "https://blog-cdn.reedsy.com/directories/gallery/255/large_6cacd912f898ca2f94d083737783e23e.jpg",
-    isAvailable: false,
-  },
-  {
-    id: 2,
-    title: "Whispers of the Forest",
-    author: "Jane Smith",
-    genre: "Fantasy",
-    year: 2019,
-    description: "An enchanting journey through an ancient forest.",
-    imageUrl: "https://blog-cdn.reedsy.com/directories/gallery/255/large_6cacd912f898ca2f94d083737783e23e.jpg",
-    isAvailable: false,
-  },
-  {
-    id: 2,
-    title: "Whispers of the Forest",
-    author: "Jane Smith",
-    genre: "Fantasy",
-    year: 2019,
-    description: "An enchanting journey through an ancient forest.",
-    imageUrl: "https://blog-cdn.reedsy.com/directories/gallery/255/large_6cacd912f898ca2f94d083737783e23e.jpg",
-    isAvailable: false,
-  },
-];
-
+import axios from "axios";
+import SearchBar from "./SearchBar";
 
 
 const BookList = ({ isAdmin = false }) => {
+  const [books, setBooks] = useState([]);
+  // search incorperation
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const [loading, setLoading] = useState(false);
+
+  const fetchBooks = async () => {
+    setLoading(true);
+
+    try {
+      const res = await axios.get("https://jubi-back-end.onrender.com/books");
+      const data = res.data;
+      setBooks(data);
+      console.log(data);
+
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // use effect need
+
+  useEffect(() => {
+    // call yout function here
+
+    fetchBooks();
+    // bring [] as shown
+  }, []);
+
+  //search inorperation line 2
+  const handleSearch = (term) => {
+    setSearchTerm(term.toLowerCase());
+  };
+
+const filteredBooks = books.filter(
+  (book) =>
+    book.title?.toLowerCase().includes(searchTerm) ||
+    book.author?.toLowerCase().includes(searchTerm)
+);
+
+  if (loading) return <p className="text-white">Loading...</p>;
+  if (!books || books.length === 0)
+    return <p className="text-red">No Books Found</p>;
+
+ 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-      {books.map((book) => (
-        <BookCard key={book.id} book={book} isAdmin={isAdmin} />
-      ))}
+    <div>
+     
+<div className="p-4">
+  
+      <SearchBar onSearch={handleSearch}  />
+
+      <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-5 gap-6 pt-4 p-5 overflow-hidden">
+        {filteredBooks.length > 0 ? (
+          filteredBooks.map((book) => (
+            <BookCard key={book.id} book={book} isAdmin={isAdmin} />
+          ))
+        ) : (
+          <p className="text-center text-gray-500 col-span-full">
+            No matching books found.
+          </p>
+        )}
+      </div>
+    </div>
+
+
     </div>
   );
 };
