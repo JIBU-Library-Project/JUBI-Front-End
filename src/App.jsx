@@ -9,6 +9,7 @@ import AdminPage from "./pages/AdminPage";
 import BookListAdmin from "./pages/BookListAdmin"
 import BookList from "./components/BookList"
 import AdminBookDetailsPages from "./pages/AdminBookDetailsPages";
+import iphoneImg from "./assets/iphone.png"
 
 const App = () => {
   const router = createBrowserRouter([
@@ -45,6 +46,11 @@ const App = () => {
       element: <BookListAdmin isAdmin={true} />,
      
     },
+//  {
+//       path: "/iphoneImg",
+//       element: <EditBookForm/>
+//     }
+   
   ]);
 
   return <RouterProvider router={router} />;
