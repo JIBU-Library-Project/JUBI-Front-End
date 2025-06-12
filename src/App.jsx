@@ -6,10 +6,10 @@ import UserBookDetailsPages from "./pages/UserBookDetailsPages";
 import AddBookForm from "./components/AddBookForm";
 import EditBookForm from "./components/EditBookForm";
 import AdminPage from "./pages/AdminPage";
-import BookListAdmin from "./pages/BookListAdmin"
-import BookList from "./components/BookList"
+import BookListAdmin from "./pages/BookListAdmin";
 import AdminBookDetailsPages from "./pages/AdminBookDetailsPages";
 import iphoneImg from "./assets/iphone.png"
+
 
 const App = () => {
   const router = createBrowserRouter([
@@ -23,11 +23,11 @@ const App = () => {
     },
     {
       path: "admin/books/:id",
-      element: <AdminBookDetailsPages/>,
+      element: <AdminBookDetailsPages />,
     },
     {
       path: "/books/:id",
-      element: <UserBookDetailsPages/>,
+      element: <UserBookDetailsPages />,
     },
     {
       path: "/add-book",
@@ -44,7 +44,6 @@ const App = () => {
     {
       path: "/admin-booklist",
       element: <BookListAdmin isAdmin={true} />,
-     
     },
 //  {
 //       path: "/iphoneImg",
