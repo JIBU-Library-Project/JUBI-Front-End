@@ -8,6 +8,7 @@ import EditBookForm from "./components/EditBookForm";
 import AdminPage from "./pages/AdminPage";
 import BookListAdmin from "./pages/BookListAdmin";
 import AdminBookDetailsPages from "./pages/AdminBookDetailsPages";
+import iphoneImg from "./assets/iphone.png"
 
 
 const App = () => {
@@ -44,6 +45,11 @@ const App = () => {
       path: "/admin-booklist",
       element: <BookListAdmin isAdmin={true} />,
     },
+//  {
+//       path: "/iphoneImg",
+//       element: <EditBookForm/>
+//     }
+   
   ]);
 
   return <RouterProvider router={router} />;
