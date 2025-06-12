@@ -1,6 +1,7 @@
 import PagesLayoutUser from "../layouts/PagesLayoutUser";
 import libimg1 from "../assets/library-cuate.png"
 import { Link } from "react-router";
+import SearchBar from "../components/SearchBar";
 
 const HomePage = () => {
   return (

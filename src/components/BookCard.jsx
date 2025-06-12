@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
-// import { Eye, Edit, Trash2 } from "lucide-react";
+import axios from "axios";
 
 const BookCard = ({ book, isAdmin }) => {
   const navigate = useNavigate();
@@ -13,33 +13,44 @@ const BookCard = ({ book, isAdmin }) => {
     }
   };
 
+  const handleDelete = async(id) => {
+    try {
+      const res = await axios.delete(`https://jubi-back-end.onrender.com/books/${id}`);
+      alert(res.data.message)
+      fetch
+    } catch (error) {
+      console.log(error);
+    
+    }
+  }
+
   return (
     <div
       id="book-card"
-      // className="bg-[#272822] shadow-lg rounded-xl overflow-hidden //pr-15 p-2 flex flex-col gap-y-2 "
+      className="bg-[#272822] shadow-lg rounded-xl overflow-hidden //pr-15 p-2 flex  w-90 flex-col gap-y-2 "
     >
       <div id="book-image">
         <img
           src={book.imageUrl}
           alt={book.title}
-          className=" //bg-amber-100 //p- w-full h-80 object-contain rounded-md //mb-4 "
+          className=" //bg-amber-100  w-100 h-100 //object-cover rounded-md //mb-4 "
         />
       </div>
 
-      <div id="book-info-holder">
+      <div id="book-info-holder w-full">
         <div id="book-info" className="flex flex-col pt-5 text-[30px]">
           <h2 className="font-semibold text-[#cfc039] mb-1">
             {book.title.replace(/^The\s+/i, "")}
           </h2>
-          <div id="book-child-container" className="flex ">
-            <div id="book-childs">
-              <p>Author: {book.author}</p>
+          <div id="book-child-container" className="flex w-full overflow-hidden ">
+            <div  id="book-childs" className="w-70">
+              <p> {book.author}</p>
               <p>Genre: {book.genre}</p>
               <p>Year: {book.year}</p>
             </div>
             <div id="available">
               <p
-                className={`text-sm font-semibold pt-6 pl-20 //bg-amber-200 ${
+                className={`text-[15px] font-semibold pt-6 pl-20 pr-5 //bg-amber-200 ${
                   book.isAvailable ? "text-green-600" : "text-red-500"
                 }`}
               >
@@ -64,7 +75,7 @@ const BookCard = ({ book, isAdmin }) => {
                 {/* <Edit size={18} /> */}
                 <span className="edit">Edit</span>
               </button>
-              <button className="text-red-600 hover:text-red-800 flex items-center gap-1">
+              <button className="text-red-600 hover:text-red-800 flex items-center gap-1" onClick={() => handleDelete(book.id)}>
                 {/* <Trash2 size={18} /> */}
                 <span className="delete">Delete</span>
               </button>

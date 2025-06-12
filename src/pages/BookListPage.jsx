@@ -6,7 +6,8 @@ const BookListPage = () => {
   return (
     <div>
       <PagesLayoutUser>
-        <div className="bg-[#000] mt-9 ">
+        <div className="bg-[#000]">
+          
           <div>
             <h1 className="flex justify-center text-4xl pt-16 pb-16 font-bold text-white">
               Explore Our Book Collection
