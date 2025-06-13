@@ -34,7 +34,7 @@ const App = () => {
       element: <AddBookForm />,
     },
     {
-      path: "/edit-book/",
+      path: "/edit-book/:id",
       element: <EditBookForm />,
     },
     {

@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import { FaEdit } from "react-icons/fa";
 
 const BookCard = ({ book, isAdmin, onDelete }) => {
   const navigate = useNavigate();
@@ -19,7 +20,9 @@ const BookCard = ({ book, isAdmin, onDelete }) => {
         `https://jubi-back-end.onrender.com/books/${id}`
       );
       alert(res.data.message);
+
       if (onDelete) onDelete(id);
+
     } catch (error) {
       console.log(error);
     }
@@ -75,11 +78,17 @@ const BookCard = ({ book, isAdmin, onDelete }) => {
 
           {isAdmin && (
             <>
-              <button className="text-[#000000] hover:text-yellow-800 flex items-center gap-1">
+
+              <button
+                className="text-[#000000] hover:text-yellow-800 flex items-center gap-1"
+                onClick={() => navigate(`/edit-book/${book.id}`)}
+              >
+
                 {/* <Edit size={18} /> */}
                 <span className="edit">Edit</span>
               </button>
               <button
+
                 className="text-[#e4e4e4] hover:text-red-800 flex items-center gap-1"
                 onClick={() => handleDelete(book.id)}
               >

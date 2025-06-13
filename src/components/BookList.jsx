@@ -12,9 +12,11 @@ const BookList = ({ isAdmin = false }) => {
     setLoading(true);
     try {
       const res = await axios.get("https://jubi-back-end.onrender.com/books");
+
       const data = res.data;
-      setBooks(data.books); // ✅ Fix this line
+      setBooks(data.books); 
       console.log(data.books);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     } finally {
@@ -34,11 +36,11 @@ const BookList = ({ isAdmin = false }) => {
     setSearchTerm(term.toLowerCase());
   };
 
+
   const filteredBooks = books.filter(
     (book) =>
       book.title?.toLowerCase().includes(searchTerm) ||
       book.author?.toLowerCase().includes(searchTerm)
-  );
 
   if (loading) return <p className="text-white">Loading...</p>;
 
@@ -63,6 +65,7 @@ const BookList = ({ isAdmin = false }) => {
             No matching books found.
           </p>
         )}
+
       </div>
     </div>
   );
