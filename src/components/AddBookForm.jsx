@@ -1,23 +1,62 @@
 import React from "react";
 import PagesLayoutAdmin from "../layouts/PagesLayoutAdmin";
 import { FaBook } from "react-icons/fa";
+import axios from "axios";
+import { useNavigate } from "react-router";
 
 const AddBookForm = () => {
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    //prevent form from refreshing
+    e.preventDefault();
+
+    const formData = e.target;
+
+    console.log(formData);
+
+    const payload = {
+      title: formData.title.value,
+      author: formData.author.value,
+      genre: formData.genre.value,
+      description: formData.description.value,
+      year: formData.year.value,
+      imageUrl: formData.imageUrl.value,
+      isAvailable: formData.isAvailable.value == "on" ? true : false,
+    };
+
+    try {
+      const res = await axios.post(
+        "https://jubi-back-end.onrender.com/books",
+        payload
+      );
+
+      alert("Added successfuly");
+      navigate("/books")
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <PagesLayoutAdmin>
       <div className="bg-[#161614ee] p-3 min-h-screen">
-        <form className="bg-white p-6 rounded-lg shadow-md m-20">
+        <form
+          className="bg-white p-6 rounded-lg shadow-md m-20"
+          onSubmit={handleSubmit}
+        >
           <h3 className="text-xl font-semibold mb-4 text-[#00a63e] flex">
             Add New Book <FaBook className="w-6 h-6" />
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 mb-4">
             <div>
               <label className="block text-gray-700 mb-2">Title*</label>
               <input
                 type="text"
                 name="title"
-                value=""
+                // value=""
                 required
                 className="w-full px-3 py-2 border border-gray-300 rounded-md"
               />
@@ -28,7 +67,7 @@ const AddBookForm = () => {
               <input
                 type="text"
                 name="author"
-                value=""
+                // value=""
                 required
                 className="w-full px-3 py-2 border border-gray-300 rounded-md"
               />
@@ -39,7 +78,7 @@ const AddBookForm = () => {
               <input
                 type="text"
                 name="genre"
-                value=""
+                // value=""
                 className="w-full px-3 py-2 border border-gray-300 rounded-md"
               />
             </div>
@@ -49,7 +88,7 @@ const AddBookForm = () => {
               <input
                 type="number"
                 name="year"
-                value=""
+                // value=""
                 className="w-full px-3 py-2 border border-gray-300 rounded-md"
               />
             </div>
@@ -59,7 +98,7 @@ const AddBookForm = () => {
             <label className="block text-gray-700 mb-2">Description</label>
             <textarea
               name="description"
-              value=""
+              // value=""
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
               rows="3"
             ></textarea>
@@ -70,7 +109,7 @@ const AddBookForm = () => {
             <input
               type="url"
               name="imageUrl"
-              value=""
+              // value=""
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
             />
           </div>
