@@ -1,6 +1,6 @@
 import React from 'react'
 import PagesLayoutAdmin from '../layouts/PagesLayoutAdmin'
-import libimg1 from "../assets/library-cuate.png"
+import libimg1 from "../assets/Library-cuate.png"
 import { Link } from 'react-router'
 
 const AdminPage = () => {

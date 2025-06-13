@@ -28,14 +28,14 @@ const AdminNavBar = () => {
             </Link>
           </li>
         
-          <li>
+          {/* <li>
             <Link
               to="/edit-book"
               className=" px-4 py-2 font-medium hover:bg-[#cdf44b] hover:text-[#1a1c19] rounded-full transition"
             >
               Edit Book
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
 
