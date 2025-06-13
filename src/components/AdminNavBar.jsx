@@ -1,19 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router'; // use `react-router-dom`
+import { Link } from 'react-router';
+import logo from "../assets/LOGO.png"
 
 const AdminNavBar = () => {
   return (
-    <nav className=" bg-[#272822] pt-5 p-2 m pb-5 flex flex-col md:flex-row justify-between items-center align-middle">
+    <nav className="pt-5 pb-5 px-2 m-0 flex flex-col md:flex-row justify-between items-center sticky top-0 z-50 bg-[#e0e0e0]/20 backdrop-blur-[55px] shadow-md">
       {/* Logo */}
-      <span className="text-[#cdf44b] ml-10 font-extrabold text-[25px]">JUBILib.</span>
+     <span className="ml-10 font-extrabold text-[25px] text-[#b60466]"><img src={logo} alt="" className="w-50"/></span>
 
       {/* Nav Links with Rounded Background */}
       <div className="my-3 md:my-0">
-        <ul className="flex flex-wrap gap-x-5 gap-y-2 px- py-2 ">
+        <ul className=" backdrop-blur-[30px] pl-15 pr-15 flex gap-x-15 bg-[#ffffff]/30 text-black rounded-[2rem] //border-amber-200 py-[10px] px-[1.5em] border border-solid border-white">
           <li>
             <Link
               to="/admin-booklist"
-              className="text-white px-4 py-2 font-medium hover:bg-[#cdf44b] hover:text-[#1a1c19] rounded-full transition"
+              className=" px-4 py-2 font-medium hover:bg-[#cdf44b] hover:text-[#1a1c19] rounded-full transition"
             >
               All Books
             </Link>
@@ -21,7 +22,7 @@ const AdminNavBar = () => {
           <li>
             <Link
               to="/add-book"
-              className="text-white px-4 py-2 font-medium hover:bg-[#cdf44b] hover:text-[#1a1c19] rounded-full transition"
+              className=" px-4 py-2 font-medium hover:bg-[#cdf44b] hover:text-[#1a1c19] rounded-full transition"
             >
               Add Book
             </Link>
@@ -30,7 +31,7 @@ const AdminNavBar = () => {
           <li>
             <Link
               to="/edit-book"
-              className="text-white px-4 py-2 font-medium hover:bg-[#cdf44b] hover:text-[#1a1c19] rounded-full transition"
+              className=" px-4 py-2 font-medium hover:bg-[#cdf44b] hover:text-[#1a1c19] rounded-full transition"
             >
               Edit Book
             </Link>

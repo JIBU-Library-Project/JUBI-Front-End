@@ -13,13 +13,18 @@ const AdminPage = () => {
         {/* Text Section */}
         <div>
           <h1 className="text-5xl font-extrabold text-[#ee6c39] leading-tight mb-6 animate-fade-in-up">
-            Welcome to <span className="text-[#263238]">Jubi Library</span>
-          </h1>
-          <p className="text-gray-700 text-lg mb-8 animate-fade-in-up delay-200">
-            Discover a world of knowledge, explore rare collections, and
-            dive into the stories that shape minds and futures. Jubi Library
-            is more than a place — it's an experience.
-          </p>
+  Welcome to JubiLib <span className="text-[#263238]">Admin Dashboard</span>
+</h1>
+
+<ul className="list-disc list-inside text-gray-800 text-lg space-y-1 animate-fade-in-up delay-200">
+  <li>Add new books</li>
+  <li>Edit existing records</li>
+  <li>Delete outdated entries</li>
+</ul>
+
+<p className="text-gray-600 text-sm mt-4 animate-fade-in-up delay-300 italic">
+  Empower your shelves — one action at a time.
+</p>
         </div>
 
       
