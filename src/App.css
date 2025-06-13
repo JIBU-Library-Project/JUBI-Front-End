@@ -7,27 +7,28 @@
   background-color: #ffffff;
   border: 1px solid rgb(167, 166, 166);
   border-radius: 5px;
+  
 }
 
 .view {
-  background-color: rgb(68, 68, 68);
+  background-color: rgb(0, 0, 0);
   color: aliceblue;
   padding: 3px 8px;
-  border-radius: 5px;
+  border-radius: 15px;
   border: solid black solid wheat;
 }
 
 .edit {
-  background-color: rgb(68, 68, 68);
+  background-color: rgb(255, 173, 21);
   padding: 3px 8px;
-  border-radius: 5px;
-  border: solid black solid wheat;
+  border-radius: 15px;
+  border: solid black solid rgb(255, 224, 165);
 }
 
 .delete {
-  background-color: rgb(68, 68, 68);
+  background-color: rgb(255, 24, 24);
   padding: 3px 8px;
-  border-radius: 5px;
+  border-radius: 15px;
   border: solid black solid wheat;
 }
 

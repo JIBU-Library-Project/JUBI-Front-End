@@ -2,72 +2,26 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
 
-// const dummyBooks = [
-//   {
-//     id: 1,
-//     title: "The Big Bird",
-//     author: "John Doe",
-//     genre: "Fiction",
-//     year: 2021,
-//     description: "A thrilling tale of a mysterious bird.",
-//     imageUrl:
-//       "https://blog-cdn.reedsy.com/directories/gallery/256/large_753131580521b5596c3e0499958150f7.jpg",
-//     isAvailable: true,
-//   },
-//   {
-//     id: 2,
-//     title: "Whispers of the Forest",
-//     author: "Jane Smith",
-//     genre: "Fantasy",
-//     year: 2019,
-//     description: "An enchanting journey through an ancient forest.",
-//     imageUrl:
-//       "https://blog-cdn.reedsy.com/directories/gallery/255/large_6cacd912f898ca2f94d083737783e23e.jpg",
-//     isAvailable: false,
-//   },
-//   {
-//     id: 2,
-//     title: "Whispers of the Forest",
-//     author: "Jane Smith",
-//     genre: "Fantasy",
-//     year: 2019,
-//     description: "An enchanting journey through an ancient forest.",
-//     imageUrl:
-//       "https://blog-cdn.reedsy.com/directories/gallery/255/large_6cacd912f898ca2f94d083737783e23e.jpg",
-//     isAvailable: false,
-//   },
-//   {
-//     id: 2,
-//     title: "Whispers of the Forest",
-//     author: "Jane Smith",
-//     genre: "Fantasy",
-//     year: 2019,
-//     description: "An enchanting journey through an ancient forest.",
-//     imageUrl:
-//       "https://blog-cdn.reedsy.com/directories/gallery/255/large_6cacd912f898ca2f94d083737783e23e.jpg",
-//     isAvailable: false,
-//   },
-// ];
-
 const BookDetails = () => {
   const { id } = useParams();
-  const [book, setBook] = useState();
+  const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const fetchSingleBook = async () => {
-    setLoading(true);
-
     try {
+      setLoading(true);
       const res = await axios.get(
         `https://jubi-back-end.onrender.com/books/${id}`
       );
 
-      setBook(res.data);
-      console.log(res.data);
-
-      setLoading(false);
+      if (res.data.matchBook) {
+        setBook(res.data.matchBook);
+      } else {
+        setBook(null);
+      }
     } catch (error) {
-      console.log(error);
+      console.error( error);
+      setBook(null);
     } finally {
       setLoading(false);
     }
@@ -75,18 +29,14 @@ const BookDetails = () => {
 
   useEffect(() => {
     fetchSingleBook();
-  }, []);
+  }, [id]);
 
-  if (loading) {
-    return <p className="text-black">Loading...</p>;
-  }
+  if (loading) return <p className="text-black">Loading...</p>;
 
-  if (!book) {
-    return <p className="text-red-500">Book not found</p>;
-  }
+  if (!book) return <p className="text-red-500">Book not found.</p>;
 
   return (
-    <div className=" bg-amber-200 w-full h-min py-10">
+    <div className=" flex bg-[#272822] h-screen items-center //py-10">
       <div className="max-w-6xl mx-auto bg-[#ffff] rounded-3xl shadow-lg overflow-hidden flex flex-col md:flex-row gap-24 p-8  md:p-12">
         {/* Book Cover */}
         <div className="flex-shrink-0 //md:w-1/2 flex justify-center items-start">

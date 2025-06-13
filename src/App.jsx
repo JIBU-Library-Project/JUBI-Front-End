@@ -8,7 +8,7 @@ import EditBookForm from "./components/EditBookForm";
 import AdminPage from "./pages/AdminPage";
 import BookListAdmin from "./pages/BookListAdmin";
 import AdminBookDetailsPages from "./pages/AdminBookDetailsPages";
-import iphoneImg from "./assets/iphone.png"
+
 
 
 const App = () => {
@@ -34,7 +34,7 @@ const App = () => {
       element: <AddBookForm />,
     },
     {
-      path: "/edit-book",
+      path: "/edit-book/",
       element: <EditBookForm />,
     },
     {
