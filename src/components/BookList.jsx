@@ -3,7 +3,6 @@ import BookCard from "../components/BookCard";
 import axios from "axios";
 import SearchBar from "./SearchBar";
 
-
 const BookList = ({ isAdmin = false }) => {
   const [books, setBooks] = useState([]);
   // search incorperation
@@ -16,7 +15,7 @@ const BookList = ({ isAdmin = false }) => {
 
     try {
       const res = await axios.get("https://jubi-back-end.onrender.com/books");
-      const data = res.data;
+      const data = res.data.books;
       setBooks(data);
       console.log(data);
 
@@ -42,38 +41,35 @@ const BookList = ({ isAdmin = false }) => {
     setSearchTerm(term.toLowerCase());
   };
 
-const filteredBooks = books.filter(
-  (book) =>
-    book.title?.toLowerCase().includes(searchTerm) ||
-    book.author?.toLowerCase().includes(searchTerm)
-);
+  const filteredBooks =
+    books?.length > 0 &&
+    books.filter(
+      (book) =>
+        book.title?.toLowerCase().includes(searchTerm) ||
+        book.author?.toLowerCase().includes(searchTerm)
+    );
 
   if (loading) return <p className="text-white">Loading...</p>;
   if (!books || books.length === 0)
     return <p className="text-red">No Books Found</p>;
 
- 
   return (
     <div>
-     
-<div className="p-4">
-  
-      <SearchBar onSearch={handleSearch}  />
+      <div className="p-4">
+        <SearchBar onSearch={handleSearch} />
 
-      <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-5 gap-6 pt-4 p-5 overflow-hidden">
-        {filteredBooks.length > 0 ? (
-          filteredBooks.map((book) => (
-            <BookCard key={book.id} book={book} isAdmin={isAdmin} />
-          ))
-        ) : (
-          <p className="text-center text-gray-500 col-span-full">
-            No matching books found.
-          </p>
-        )}
+        <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-5 gap-6 pt-4 p-5 overflow-hidden">
+          {books.length > 0 ? (
+            books.map((book) => (
+              <BookCard key={book.id} book={book} isAdmin={isAdmin} />
+            ))
+          ) : (
+            <p className="text-center text-gray-500 col-span-full">
+              No matching books found.
+            </p>
+          )}
+        </div>
       </div>
-    </div>
-
-
     </div>
   );
 };
